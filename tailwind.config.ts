@@ -14,7 +14,9 @@ export default {
       },
     },
   },
-  plugins: [
-    require('daisyui'),
-  ],
+  plugins: [require("daisyui")],
+  daisyui: {
+    // themes: ["light", "dark", "business"], //for desire theme
+    themes: false, // for use oly dark and light theme
+  },
 } satisfies Config;

@@ -1,3 +1,10 @@
 export default function Page() {
-  return <h1>Hello, Next.js!</h1>
+  return (
+    <div className="mockup-phone border-primary">
+      <div className="camera"></div>
+      <div className="display">
+        <div className="artboard artboard-demo phone-1">Hi.</div>
+      </div>
+    </div>
+  );
 }
