@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI!;
 if (!MONGODB_URI) throw new Error("MONGODB_URI must be defined");
 
 let cached = global.mongoose;
@@ -12,20 +12,20 @@ export const connectToDatabase = async () => {
   if (cached.conn) {
     return cached.conn;
   }
-  if(!cached.promise){
+  if (!cached.promise) {
     const opts = {
       bufferCommands: true,
-      maxPoolsize:10
+      maxPoolsize: 10,
     };
     cached.promise = mongoose
-    .connect(MONGODB_URI, opts)
-    .then(() => mongoose.connection);
+      .connect(MONGODB_URI, opts)
+      .then(() => mongoose.connection);
   }
   try {
-    cached.conn = await cached.promise
+    cached.conn = await cached.promise;
   } catch (error) {
     cached.promise = null;
-    throw error ;  
+    throw error;
   }
   return cached.conn;
 };
